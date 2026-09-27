@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Digital Identity, Trust & Deepfake Detection Platform</title>
+  <meta name="description" content="Enterprise Digital Identity, Trust & Deepfake Detection Platform verifying identities, detecting manipulated media, validating official documents, and computing real-time trust scores.">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%2300f0ff%22><path d=%22M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.54-3.14 8.78-7 9.94-3.86-1.16-7-5.4-7-9.94v-4.7l7-3.12z%22/></svg>">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="top-header">
+    <div class="brand-section">
+      <div class="brand-icon-shield">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.54-3.14 8.78-7 9.94-3.86-1.16-7-5.4-7-9.94v-4.7l7-3.12zm-1 5v2h2v-2h-2zm0 4v6h2v-6h-2z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-title">Enterprise Digital Trust Platform</div>
+        <div class="brand-subtitle">Digital Identity & Deepfake Detection</div>
+      </div>
+    </div>
+
+    <!-- View Tabs -->
+    <nav class="nav-tabs" id="navTabs">
+      <button class="nav-tab-btn active" data-tab="tab-dashboard" id="btn-tab-dashboard">
+        <span>📊</span> Dashboard
+      </button>
+      <button class="nav-tab-btn" data-tab="tab-studio" id="btn-tab-studio">
+        <span>🔬</span> Verification Studio
+      </button>
+      <button class="nav-tab-btn" data-tab="tab-graph" id="btn-tab-graph">
+        <span>🕸️</span> Knowledge Graph
+      </button>
+      <button class="nav-tab-btn" data-tab="tab-copilot" id="btn-tab-copilot">
+        <span>🤖</span> AI Copilot
+      </button>
+      <button class="nav-tab-btn" data-tab="tab-alerts" id="btn-tab-alerts">
+        <span>🚨</span> Alert Center <span class="sev-badge CRITICAL" id="alert-counter-badge">4</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="tab-presentation" id="btn-tab-presentation">
+        <span>📐</span> Architecture & Slides
+      </button>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <div class="system-status-pill">
+        <span class="pulse-dot"></span>
+        <span id="engine-status-text">All 10 AI Engines Online</span>
+      </div>
+      <button class="btn-secondary" id="btn-export-audit" title="Download Blockchain Merkle Proof">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+        Ledger Audit
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-container">
+
+    <!-- ================================================================= -->
+    <!-- VIEW 1: EXECUTIVE DASHBOARD -->
+    <!-- ================================================================= -->
+    <section class="view-section active" id="tab-dashboard">
+      <!-- KPI Top Row -->
+      <div class="grid-kpi-cards">
+        <div class="kpi-card">
+          <div class="kpi-label">Total Verifications (YTD)</div>
+          <div class="kpi-value" id="kpi-total-verif">142,850,912</div>
+          <div class="kpi-delta">▲ +12.4% vs prev quarter</div>
+        </div>
+        <div class="kpi-card emerald">
+          <div class="kpi-label">Verification Success Rate</div>
+          <div class="kpi-value" id="kpi-success-rate">96.42%</div>
+          <div class="kpi-delta">▲ Low False Reject Rate</div>
+        </div>
+        <div class="kpi-card crimson">
+          <div class="kpi-label">Deepfake Attacks Neutralized</div>
+          <div class="kpi-value" id="kpi-deepfake-count">18,432</div>
+          <div class="kpi-delta" style="color: var(--accent-crimson);">▲ 2D FFT & Seam Alerts</div>
+        </div>
+        <div class="kpi-card amber">
+          <div class="kpi-label">Active Fraud Syndicates</div>
+          <div class="kpi-value" id="kpi-syndicates-count">47</div>
+          <div class="kpi-delta" style="color: var(--accent-amber);">● Graph Rings Isolated</div>
+        </div>
+        <div class="kpi-card cobalt">
+          <div class="kpi-label">Mean Pipeline Latency</div>
+          <div class="kpi-value" id="kpi-latency">1.38s</div>
+          <div class="kpi-delta" style="color: var(--accent-cyan); display: flex; align-items: center; gap: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Sub-2s SLA Compliant
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Grid: Charts & Feeds -->
+      <div class="dashboard-grid-2">
+        <!-- Trust Score Distribution & Risk Breakdown -->
+        <div class="glass-card">
+          <div class="card-header-flex">
+            <div class="card-title-group">
+              <h3>Enterprise Trust Score Distribution</h3>
+              <p>Continuous Bayesian Trust Range (0 to 1000) Across 180M Active Profiles</p>
+            </div>
+            <span class="vis-badge">Live Telemetry</span>
+          </div>
+
+          <!-- Trust Distribution Bars -->
+          <div id="trust-distribution-bars" style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px;">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted);">
+            <div><strong style="color: var(--accent-emerald);">Auto-Approve (800-1000):</strong> 76.4%</div>
+            <div><strong style="color: var(--accent-blue);">Conditional (650-799):</strong> 18.2%</div>
+            <div><strong style="color: var(--accent-amber);">Manual Review (450-649):</strong> 2.8%</div>
+            <div><strong style="color: var(--accent-crimson);">Auto-Reject (0-449):</strong> 2.6%</div>
+          </div>
+        </div>
+
+        <!-- Real-time Live Security Stream -->
+        <div class="glass-card">
+          <div class="card-header-flex">
+            <div class="card-title-group">
+              <h3>Live Fraud Interceptions</h3>
+              <p>Real-time Alert Notifications</p>
+            </div>
+            <span class="sev-badge CRITICAL">STREAM ACTIVE</span>
+          </div>
+
+          <div id="dashboard-recent-alerts" style="display: flex; flex-direction: column; gap: 12px;">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- System Architecture & Module Status Row -->
+      <div class="glass-card">
+        <div class="card-header-flex">
+          <div class="card-title-group">
+            <h3>Multi-Engine Operational Status</h3>
+            <p>10 Autonomous Micro-Pipelines Orchestrated via Event-Driven Gateway</p>
+          </div>
+          <button class="btn-secondary" onclick="document.getElementById('btn-tab-studio').click();">Launch Live Studio</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 10px;">
+          <div class="visualizer-box">
+            <div class="vis-header">
+              <span class="vis-label">1. Identity Verification</span>
+              <span class="vis-badge">ICAO 9303</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted);">TD1/TD2/TD3 MRZ Modulo-731 parser, temporal expiry & age calculations.</p>
+          </div>
+          <div class="visualizer-box">
+            <div class="vis-header">
+              <span class="vis-label">2. Face & 3D Liveness</span>
+              <span class="vis-badge">ISO 30107-3</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted);">Active blink/smile kinematics, 3D surface depth relief, and moiré screen PAD.</p>
+          </div>
+          <div class="visualizer-box">
+            <div class="vis-header">
+              <span class="vis-label">3. Deepfake Detection</span>
+              <span class="vis-badge">2D FFT + ELA</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted);">Frequency domain upsampling spikes, Poisson face-swap blending seams.</p>
+          </div>
+          <div class="visualizer-box">
+            <div class="vis-header">
+              <span class="vis-label">4. Voice Biometrics</span>
+              <span class="vis-badge">Neural Vocoder</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted);">ElevenLabs/Bark spectral flux, room impulse response (RIR) replay detection.</p>
+          </div>
+          <div class="visualizer-box">
+            <div class="vis-header">
+              <span class="vis-label">5. Document Intelligence</span>
+              <span class="vis-badge">ELA + Hologram</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted);">OCR extraction, Error Level Analysis (ELA) splice heatmap, Guilloche waves.</p>
+          </div>
+          <div class="visualizer-box">
+            <div class="vis-header">
+              <span class="vis-label">6. Knowledge Graph</span>
+              <span class="vis-badge">NetworkX / Neo4j</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted);">Synthetic identity ring detection, high-degree device collision, Cypher export.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- VIEW 2: FORENSIC VERIFICATION STUDIO -->
+    <!-- ================================================================= -->
+    <section class="view-section" id="tab-studio">
+      <div class="studio-layout">
+
+        <!-- Column 1: Test Case & Input Controls -->
+        <div class="glass-card">
+          <div class="card-header-flex">
+            <div class="card-title-group">
+              <h3>Preset Benchmarks</h3>
+              <p>6 Realistic Enterprise Case Studies</p>
+            </div>
+          </div>
+
+          <div class="case-selector-list" id="caseSelectorList">
+            <!-- Dynamic cases -->
+          </div>
+
+          <div style="border-top: 1px solid var(--border-subtle); padding-top: 16px; margin-top: 10px;">
+            <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+              <button class="btn-secondary" id="btn-use-webcam" style="flex: 1; font-size: 0.78rem; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                Webcam Live
+              </button>
+              <button class="btn-secondary" id="btn-use-mic" style="flex: 1; font-size: 0.78rem; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                Mic Test
+              </button>
+            </div>
+
+            <button class="btn-primary" id="btn-run-verification">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              Run Full AI Verification
+            </button>
+          </div>
+        </div>
+
+        <!-- Column 2: Center Forensic Canvases -->
+        <div>
+          <div class="studio-center-grid">
+            <!-- Canvas 1: Document & ELA Heatmap -->
+            <div class="visualizer-box">
+              <div class="vis-header">
+                <span class="vis-label">Document Forensics (OCR & ELA)</span>
+                <span class="vis-badge" id="badge-doc-ela">ELA Quality 90%</span>
+              </div>
+              <div class="vis-canvas-container" id="canvas-container-doc">
+                <img id="img-preview-doc" alt="Document specimen preview" src="">
+                <canvas id="canvas-overlay-doc" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+              </div>
+              <div style="margin-top: 8px; font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
+                <span id="label-mrz-status">MRZ: Validating...</span>
+                <span id="label-ela-status">ELA Heat: 0.08</span>
+              </div>
+            </div>
+
+            <!-- Canvas 2: Face & 3D Anatomical Depth Map -->
+            <div class="visualizer-box">
+              <div class="vis-header">
+                <span class="vis-label">Biometric 3D Depth & PAD</span>
+                <span class="vis-badge" id="badge-face-pad">ISO/IEC 30107-3</span>
+              </div>
+              <div class="vis-canvas-container" id="canvas-container-face">
+                <img id="img-preview-face" alt="Face specimen preview" src="">
+                <canvas id="canvas-overlay-face" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+              </div>
+              <div style="margin-top: 8px; font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
+                <span id="label-liveness-status">Liveness: 94.2%</span>
+                <span id="label-depth-status">3D Relief: 0.91</span>
+              </div>
+            </div>
+
+            <!-- Canvas 3: 2D FFT Frequency Spectrum (Deepfake Check) -->
+            <div class="visualizer-box">
+              <div class="vis-header">
+                <span class="vis-label">2D FFT Spectral Power Density</span>
+                <span class="vis-badge" id="badge-fft-status">Azimuthal Scan</span>
+              </div>
+              <div class="vis-canvas-container">
+                <canvas id="canvas-fft-spectrum" width="300" height="220"></canvas>
+              </div>
+              <div style="margin-top: 8px; font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
+                <span id="label-fft-status">Grid Artifacts: None</span>
+                <span id="label-deepfake-prob">Deepfake Prob: 4.2%</span>
+              </div>
+            </div>
+
+            <!-- Canvas 4: Audio Spectrogram & Voiceprint -->
+            <div class="visualizer-box">
+              <div class="vis-header">
+                <span class="vis-label">Voiceprint & Acoustic Spectrum</span>
+                <span class="vis-badge" id="badge-voice-status">16kHz Mel-Scale</span>
+              </div>
+              <div class="vis-canvas-container">
+                <canvas id="canvas-audio-spectrogram" width="300" height="220"></canvas>
+              </div>
+              <div style="margin-top: 8px; font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between;">
+                <span id="label-voice-status">Acoustic: Natural</span>
+                <span id="label-clone-prob">Clone Prob: 8.0%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cross-Module Forensic Detail Log -->
+          <div class="glass-card" style="padding: 18px 22px;">
+            <div class="card-header-flex" style="margin-bottom: 12px;">
+              <h4 style="font-size: 0.92rem; font-weight: 700;">Multi-Modal Forensic Telemetry Feed</h4>
+              <span class="vis-badge" id="label-processing-time">Processing: 1.28s</span>
+            </div>
+            <div id="forensic-telemetry-feed" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; max-height: 140px; overflow-y: auto;">
+              <!-- Telemetry lines -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: Trust Score Meter & Explainable AI -->
+        <div class="glass-card studio-col-summary">
+          <div class="card-header-flex">
+            <div class="card-title-group">
+              <h3>Consolidated Trust Score</h3>
+              <p>Real-Time Bayesian Multi-Signal</p>
+            </div>
+          </div>
+
+          <div class="trust-gauge-card">
+            <div class="gauge-svg-container">
+              <svg viewBox="0 0 200 120" style="width: 100%; height: 100%;">
+                <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="16" stroke-linecap="round"/>
+                <path id="gauge-arc-fill" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#gaugeGradient)" stroke-width="16" stroke-dasharray="251.2" stroke-dashoffset="30" stroke-linecap="round" style="transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1);"/>
+                <defs>
+                  <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ef4444"/>
+                    <stop offset="40%" stop-color="#f59e0b"/>
+                    <stop offset="70%" stop-color="#00f0ff"/>
+                    <stop offset="100%" stop-color="#10b981"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="gauge-score-text" id="gauge-score-val">945</div>
+            </div>
+            <div class="gauge-subtext">Score Range: 0 - 1000</div>
+
+            <div class="decision-banner approved" id="decision-banner-box">
+              <span id="decision-text">APPROVED</span>
+            </div>
+          </div>
+
+          <!-- Explainable AI (SHAP Waterfall Attribution) -->
+          <div style="margin-top: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="font-size: 0.88rem; font-weight: 700;">Explainable AI (XAI) Attribution</h4>
+              <span style="font-size: 0.70rem; color: var(--accent-cyan); font-family: var(--font-mono);">SHAP Waterfall</span>
+            </div>
+
+            <div class="shap-list" id="shap-waterfall-container">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Blockchain Audit Block Proof -->
+          <div style="margin-top: 22px; padding: 12px 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); font-size: 0.72rem; font-family: var(--font-mono);">
+            <div style="color: var(--accent-cyan); margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center;">
+              <span style="display: flex; align-items: center; gap: 5px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                Merkle Block <span id="audit-block-idx">#14</span>
+              </span>
+              <span style="color: var(--accent-emerald);">VERIFIED</span>
+            </div>
+            <div style="color: var(--text-dim); word-break: break-all;" id="audit-block-hash">
+              Hash: 00b9a8f27e10c491e0a82b9921e...
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- VIEW 3: IDENTITY KNOWLEDGE GRAPH -->
+    <!-- ================================================================= -->
+    <section class="view-section" id="tab-graph">
+      <div class="glass-card" style="margin-bottom: 20px;">
+        <div class="card-header-flex">
+          <div class="card-title-group">
+            <h3>Identity Knowledge Graph & Syndicate Intelligence</h3>
+            <p>Multi-Entity Link Analysis (Users • Devices • Documents • Phones • IPs • Biometrics)</p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn-secondary" id="btn-highlight-syndicate">Highlight Syndicate Ring</button>
+            <button class="btn-secondary" id="btn-export-cypher">Export Neo4j Cypher</button>
+          </div>
+        </div>
+
+        <div class="graph-canvas-wrapper">
+          <canvas id="graph-main-canvas"></canvas>
+
+          <div class="graph-legend-overlay">
+            <div class="legend-item"><span class="legend-dot" style="background: #00f2fe;"></span> Current Applicant</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #10b981;"></span> Verified Users</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #ef4444;"></span> Known Fraud Cases / Puppets</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Devices & Canvas Hashes</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #38bdf8;"></span> IP Addresses (VPN/Tor)</div>
+            <div class="legend-item"><span class="legend-dot" style="background: #e0e7ff;"></span> Documents & Phone Numbers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detected Syndicate Rings Grid -->
+      <div class="glass-card">
+        <div class="card-header-flex">
+          <div class="card-title-group">
+            <h3>Detected Criminal Syndicate Clusters</h3>
+            <p>High-Velocity Device Sharing & Multi-Identity Collisions</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px;" id="syndicate-cards-grid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- VIEW 4: AI IDENTITY COPILOT -->
+    <!-- ================================================================= -->
+    <section class="view-section" id="tab-copilot">
+      <div class="copilot-container">
+
+        <!-- Chat Workspace -->
+        <div class="copilot-chat-box">
+          <div style="padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; background: rgba(6, 9, 15, 0.6);">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 32px; height: 32px; border-radius: var(--radius-sm); background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.3); display: flex; align-items: center; justify-content: center;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8" y2="16"></line><line x1="16" y1="16" x2="16" y2="16"></line></svg>
+              </div>
+              <div>
+                <div style="font-weight: 700; font-size: 0.95rem;">AI Identity Copilot</div>
+                <div style="font-size: 0.72rem; color: var(--accent-cyan); font-family: var(--font-mono);">Multi-Agent LangGraph Reasoning Engine</div>
+              </div>
+            </div>
+            <span class="vis-badge" id="copilot-session-label">Session: kyc_sess_auth_910481</span>
+          </div>
+
+          <!-- Messages Stream -->
+          <div class="copilot-messages" id="copilot-messages-list">
+            <!-- Messages added dynamically -->
+          </div>
+
+          <!-- Input Bar -->
+          <div class="copilot-input-bar">
+            <input type="text" id="copilot-input-text" placeholder="Ask: 'Why did verification fail?', 'Show deepfake probability', 'Generate SAR report'..." autocomplete="off">
+            <button class="btn-primary" id="btn-copilot-send" style="width: auto; padding: 10px 20px;">
+              Send Query
+            </button>
+          </div>
+        </div>
+
+        <!-- Sidebar: Suggested Prompts & Investigation Tools -->
+        <div class="glass-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <h4 style="font-size: 0.90rem; font-weight: 700; margin-bottom: 12px;">Suggested Analyst Prompts</h4>
+            <div class="quick-prompts-list" id="quick-prompts-container">
+              <button class="quick-prompt-btn" data-query="Why did verification fail?">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                Why did verification fail?
+              </button>
+              <button class="quick-prompt-btn" data-query="Show deepfake probability.">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                Show deepfake probability
+              </button>
+              <button class="quick-prompt-btn" data-query="Explain the fraud indicators.">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                Explain the fraud indicators
+              </button>
+              <button class="quick-prompt-btn" data-query="Compare this face with previous records.">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                Compare face with previous records
+              </button>
+              <button class="quick-prompt-btn" data-query="Generate investigation summary.">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                Generate investigation summary (SAR)
+              </button>
+              <button class="quick-prompt-btn" data-query="Recommend verification action.">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Recommend verification action
+              </button>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; padding: 14px; background: rgba(0,0,0,0.3); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <div style="font-size: 0.78rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 4px;">Compliance Automated SAR</div>
+            <p style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;">One-click generation of formal FinCEN/AML Suspicious Activity Reports with forensic citations.</p>
+            <button class="btn-secondary" id="btn-generate-sar-instant" style="width: 100%; margin-top: 10px; font-size: 0.78rem; justify-content: center;">
+              Generate Full SAR Dossier
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- VIEW 5: ALERT CENTER -->
+    <!-- ================================================================= -->
+    <section class="view-section" id="tab-alerts">
+      <div class="glass-card">
+        <div class="card-header-flex">
+          <div class="card-title-group">
+            <h3>Enterprise Alert Center & Incident Triage</h3>
+            <p>Live Ingestion Stream of Deepfake, Forgery, Voice Clone, and Syndicate Collisions</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <select id="select-alert-filter" style="background: rgba(255,255,255,0.06); color: #fff; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 8px 14px; font-size: 0.82rem; outline: none;">
+              <option value="ALL">All Categories</option>
+              <option value="DEEPFAKE_DETECTED">Deepfake Detected</option>
+              <option value="FAKE_DOCUMENT">Fake Document</option>
+              <option value="VOICE_CLONE_ATTEMPT">Voice Clone Attempt</option>
+              <option value="SYNTHETIC_SYNDICATE">Synthetic Syndicate</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="alerts-table-wrapper">
+          <table class="alerts-table">
+            <thead>
+              <tr>
+                <th>Severity</th>
+                <th>Alert ID</th>
+                <th>Category</th>
+                <th>Subject ID</th>
+                <th>Description</th>
+                <th>Trust Score</th>
+                <th>Status</th>
+                <th>Triage Actions</th>
+              </tr>
+            </thead>
+            <tbody id="alerts-table-body">
+              <!-- Populated via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- VIEW 6: ARCHITECTURE & PRESENTATION -->
+    <!-- ================================================================= -->
+    <section class="view-section" id="tab-presentation">
+      <div class="slide-viewport">
+
+        <!-- Slide Content Container -->
+        <div id="slide-content-container">
+          <!-- Slide loaded dynamically -->
+        </div>
+
+        <!-- Slide Controls Footer -->
+        <div class="slide-controls">
+          <button class="btn-secondary" id="btn-prev-slide">Previous Slide</button>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);" id="slide-indicator">
+            Slide 1 of 6
+          </div>
+          <button class="btn-primary" id="btn-next-slide" style="width: auto; padding: 10px 24px;">Next Slide</button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Load Scripts -->
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/studio.js"></script>
+  <script src="/static/js/graph_viz.js"></script>
+  <script src="/static/js/copilot_ui.js"></script>
+  <script src="/static/js/presentation.js"></script>
+
+</body>
+</html>
