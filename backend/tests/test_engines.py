@@ -7,7 +7,7 @@ import pytest
 import numpy as np
 from fastapi.testclient import TestClient
 
-from backend.app.main import app
+from backend.app.main import app as fastapi_app
 from backend.app.engines import (
     MRZValidator, identity_verification_engine, face_liveness_engine,
     deepfake_detector, voice_authenticator, document_intelligence_engine,
@@ -21,7 +21,7 @@ from backend.app.models.schemas import (
 from backend.app.core import audit_ledger
 from backend.app.data.demo_records import get_demo_cases
 
-client = TestClient(app)
+client = TestClient(fastapi_app)
 
 
 def test_mrz_checksum_algorithm():
