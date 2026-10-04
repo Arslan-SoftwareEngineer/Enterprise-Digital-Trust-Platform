@@ -31,4 +31,4 @@ package = false
 include = ["backend*"]
 
 [tool.vercel]
-entrypoint = "backend.app.main:app"
+entrypoint = "main:app"
