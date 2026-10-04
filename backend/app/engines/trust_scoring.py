@@ -4,7 +4,8 @@ Module 6: Real-Time Multi-Signal Bayesian & Rule-Based Trust Scoring (0-1000),
 Risk Tier Classification, and SHAP-Style Explainable AI (XAI) Attribution.
 """
 
-from typing import Dict, List, Any, Tuple
+from __future__ import annotations
+from typing import Dict, List, Any, Tuple, Optional
 from ..models.schemas import (
     RiskLevel, VerificationDecision, TrustScoreResult,
     IdentityVerificationResult, FaceLivenessResult, DeepfakeDetectionResult,
