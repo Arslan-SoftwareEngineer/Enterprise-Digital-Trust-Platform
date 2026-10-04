@@ -26,5 +26,11 @@ dev = [
     "pytest>=8.3.0",
 ]
 
+[tool.uv]
+package = false
+
+[tool.setuptools.packages.find]
+include = ["backend*"]
+
 [tool.vercel]
 entrypoint = "backend.app.main:app"
