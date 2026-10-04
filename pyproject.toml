@@ -7,7 +7,7 @@ name = "enterprise-digital-trust-platform"
 version = "1.0.0"
 description = "Enterprise Digital Identity, Trust & Deepfake Detection Platform"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.115.0",
     "uvicorn>=0.30.0",
@@ -19,6 +19,10 @@ dependencies = [
     "pillow>=10.4.0",
     "scipy>=1.14.0",
     "opencv-python-headless>=4.10.0",
+]
+
+[project.optional-dependencies]
+dev = [
     "pytest>=8.3.0",
 ]
 
