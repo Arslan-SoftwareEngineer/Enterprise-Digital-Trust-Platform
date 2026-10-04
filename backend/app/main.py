@@ -4,6 +4,12 @@ FastAPI Application Entrypoint & API Gateway
 """
 
 import os
+import sys
+
+_repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+if _repo_root not in sys.path:
+    sys.path.insert(0, _repo_root)
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -75,12 +81,18 @@ _candidate_dirs = [
 ]
 frontend_dir = next((d for d in _candidate_dirs if os.path.isdir(d)), _candidate_dirs[0])
 
-if os.path.exists(frontend_dir):
+if os.path.isdir(frontend_dir):
     app.mount("/static", StaticFiles(directory=frontend_dir), name="static")
 
-    @app.get("/", tags=["Dashboard UI"])
-    async def serve_index():
-        index_path = os.path.join(frontend_dir, "index.html")
-        if os.path.exists(index_path):
-            return FileResponse(index_path)
-        return {"message": "Frontend index.html under preparation"}
+@app.get("/", tags=["Dashboard UI"])
+async def serve_index():
+    index_path = os.path.join(frontend_dir, "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    return {
+        "status": "ONLINE",
+        "project": settings.PROJECT_NAME,
+        "message": "FastAPI Gateway is operational. Access /docs for interactive Swagger API Explorer.",
+        "docs_url": "/docs",
+        "health_url": "/health"
+    }
